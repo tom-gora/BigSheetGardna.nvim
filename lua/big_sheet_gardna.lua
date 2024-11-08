@@ -4,9 +4,9 @@ local BigSheetGardna = {}
 -- Default configuration for the plugin
 ---@class BigSheetGardna.Config
 local config = {
-  notify = true,                      -- Whether to show a notification when a big file is detected
+  notify = true, -- Whether to show a notification when a big file is detected
   size_threshold = 1.5 * 1024 * 1024, -- File size threshold (default: 1.5MB)
-
+  
   -- Function to disable features when a big file is detected
   ---@param ctx {buf: number, ft: string} The buffer ID and filetype of the file
   setup = function(ctx)
@@ -69,10 +69,11 @@ function BigSheetGardna.setup(user_config)
       -- Show a notification if enabled in configuration
       if config.notify then
         local path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(ev.buf), ":p:~:.")
-        vim.notify({
-          ("Big file detected `%s`."):format(path),
-          "Some Neovim features have been **disabled**.",
-        }, vim.log.levels.WARN, { title = "BigSheetGardna" })
+        vim.notify(
+          ("Big file detected: %s. Some Neovim features have been disabled."):format(path),
+          vim.log.levels.WARN,
+          { title = "BigSheetGardna" }
+        )
       end
       -- Apply the specified setup function to disable certain features
       vim.api.nvim_buf_call(ev.buf, function()

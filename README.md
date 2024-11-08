@@ -23,6 +23,7 @@ Add BigSheetGardna to your Neovim setup. Here’s an example for **lazy.nvim**:
 ```lua
 {
   "mei28/big_sheet_gardna",
+  event = {'BufNewFile', 'BufRead'}, -- if lazy load
   config = function()
     require("big_sheet_gardna").setup({
       notify = true,             -- Show notification for large files
@@ -50,10 +51,10 @@ require("big_sheet_gardna").setup({
         notify = true, -- Enable notifications
         size_threshold = 2 * 1024 * 1024, -- Set threshold to 2MB
         setup = function(ctx)
-        vim.b.minianimate_disable = true
-        vim.schedule(function()
-                vim.bo[ctx.buf].syntax = ""
-                end)
+            vim.b.minianimate_disable = true
+            vim.schedule(function()
+                    vim.bo[ctx.buf].syntax = ""
+                    end)
         end,
         })
 ```
