@@ -45,8 +45,7 @@ BigSheetGardna is designed to be flexible and adaptable to your needs. Here’s 
 
 Example configuration to customize the behavior:
 
-```
-lua
+```lua
 require("big_sheet_gardna").setup({
         notify = true, -- Enable notifications
         size_threshold = 2 * 1024 * 1024, -- Set threshold to 2MB
