@@ -1,3 +1,5 @@
+-- Forked to extend from: https://github.com/mei28/BigSheetGardna.nvim
+--
 -- BigSheetGardna: Detects large files and disables specific features in Neovim
 local BigSheetGardna = {}
 
